@@ -1,6 +1,6 @@
-#include "output.h"
+#include "output.h"//use the header
 
-#include <iostream>
+#include <iostream>//standard library
 
 //using std::cout; //tells the compiler that we are using the cout from the standard lbrary
 

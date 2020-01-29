@@ -10,8 +10,3 @@ int multiply_numbers(int num1, int num2) //added due to comment on line 1 within
 {
 	return num1 * num2; 
 }
-
-
-
-
-
