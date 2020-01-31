@@ -1,5 +1,6 @@
 #include "output.h"
 
-#include <iostream>
-
-
+int iReturnValue()
+{
+	return 10;
+}

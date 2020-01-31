@@ -1,3 +1,4 @@
+#To add the module to CMAKE, add/remove the # infront of the ADD.
 ADD_SUBDIRECTORY(01_module)
 #ADD_SUBDIRECTORY(02_module)
 #ADD_SUBDIRECTORY(03_module)
