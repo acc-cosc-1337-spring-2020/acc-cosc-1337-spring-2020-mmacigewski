@@ -12,7 +12,15 @@ Pass the year to get_generation function and display function result.
 */
 int main() 
 {
-	
+	int year = 0;
+	string result;
+
+	cout << "Input year: ";
+	cin >> year;
+
+	result = sGetGeneration(year);
+
+	cout << "The year " << year << " falls within the " << result << " Generation";
 	
 	return 0;
 }
