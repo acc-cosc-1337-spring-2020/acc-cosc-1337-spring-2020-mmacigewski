@@ -16,6 +16,13 @@ s
 t
 */
 
+void loop_string_w_index(const std::string & str)
+{
+	for (int i = 0; i < str.length(); ++i) //iterates through the string
+	{
+		std::cout << str[i] << "\n";
+	}
+}
 
 /*
 Write code for loop_string_w_index that accepts a string parameter.
@@ -29,5 +36,10 @@ s
 t
 */
 
-
-
+void loop_string_w_auto(const std::string & str)
+{
+	for (auto ch : str) //automatically gets the type, this is a for each loop
+	{
+		std::cout << ch << "\n";
+	}
+}
