@@ -20,4 +20,5 @@ TEST_CASE("Verify calculate_gpa function")
 	REQUIRE(calculate_gpa(12, 45) == 3.75);
 	REQUIRE(calculate_gpa(120, 390) == 3.25);
 	REQUIRE(calculate_gpa(90, 180) == 2.00);
+	REQUIRE(calculate_gpa(0, 180) == -1);
 }
