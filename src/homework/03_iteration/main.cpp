@@ -2,6 +2,7 @@
 #include "dna.h"
 
 #include <iostream>
+#include <ctype>
 //write using statements
 using std::cout; using std::cin;
 
@@ -45,11 +46,11 @@ int main()
 			cin >> sDNA;
 			cout << get_reverse_string(sDNA);
 		}
-
+		
 		cout << "\n\nDo you still want to continute?(Y/y)";
 		cin >> cKeepRun;
 
-		if (std::tolower(cKeepRun) == 'n')
+		if (tolower(cKeepRun) == 'n')
 		{
 			cout << "Program Ending.";
 			bIsRunning = false;
