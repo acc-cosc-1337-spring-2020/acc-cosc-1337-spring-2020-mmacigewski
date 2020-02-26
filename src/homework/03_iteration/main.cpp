@@ -2,7 +2,7 @@
 #include "dna.h"
 
 #include <iostream>
-#include <ctype>
+//#include <ctype>
 //write using statements
 using std::cout; using std::cin;
 

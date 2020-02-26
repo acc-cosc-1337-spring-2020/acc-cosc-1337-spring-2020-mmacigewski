@@ -1,8 +1,8 @@
 #To add/remove the module to CMAKE, add/remove the # infront of the ADD.
 #ADD_SUBDIRECTORY(01_module)
-ADD_SUBDIRECTORY(02_module)
-ADD_SUBDIRECTORY(03_module)
-#ADD_SUBDIRECTORY(04_module)
+#ADD_SUBDIRECTORY(02_module)
+#ADD_SUBDIRECTORY(03_module)
+ADD_SUBDIRECTORY(04_module)
 #ADD_SUBDIRECTORY(05_module)
 #ADD_SUBDIRECTORY(06_module)
 #ADD_SUBDIRECTORY(07_module)
