@@ -10,9 +10,6 @@ and display them to screen.
 Program continues until user decides to exit.
 
 */
-
-using std::cout; using std::cin;
-
 int main() 
 {
 	auto iOption{ 0 }, iNum{ 0 }, iPrime{ 0 }; //initializes the varibales
@@ -23,50 +20,50 @@ int main()
 	while (bIsRunning)
 	{
 
-		cout << "1: Get Max from vector";
-		cout << "\n2: Get Primes";
-		cout << "\nPick an option: ";
+		std::cout << "1: Get Max from vector";
+		std::cout << "\n2: Get Primes";
+		std::cout << "\nPick an option: ";
 
-		cin >> iOption;
+		std::cin >> iOption;
 
 		if (iOption == 1)
 		{
 			while (iNum > -1)//will populate a vector until user enters a negative number
 			{
-				cout << "Input number to be inserted into vector(negative # to stop): ";
-				cin >> iNum;
+				std::cout << "Input number to be inserted into vector(negative # to stop): ";
+				std::cin >> iNum;
 
 				if (iNum > -1) //a check to make sure the vector doesn't populate with a negative
 				{
 					iUserValues.push_back(iNum);
 				}
 			}
-			cout << "\nMax number you entered: " << get_max_from_vector(iUserValues);
+			std::cout << "\nMax number you entered: " << get_max_from_vector(iUserValues);
 		}
 
 		else if (iOption == 2)
 		{
-			cout << "Input a number: ";
-			cin >> iPrime;
+			std::cout << "Input a number: ";
+			std::cin >> iPrime;
 
-			std::vector<int> iPrimeVector = vector_of_primes(iPrime); //stores the prime numbers
+			std::vector<int> iPrimeVector = vector_of_primes(iPrime); //stores the files
 
-			cout << "\nList of prime numbers: ";
+			std::cout << "\nList of prime numbers: ";
 
 			for (auto i : iPrimeVector)
 			{
-				cout << i << ", ";
+				std::cout << i << ", ";
 			}
 		}
 
-		cout << "\n\nDo you want to continue(y/n)";
-		cin >> cOption;
+		std::cout << "\n\nDo you want to continue(y/n)";
+		std::cin >> cOption;
 
 		if (cOption == 'n')
 		{
-			cout << "Program Ending";
+			std::cout << "Program Ending";
 			bIsRunning = false;
-		} else { cout << "\n"; } //new line for formatting
+		} else { std::cout << "\n"; } //new line for formatting
 	}
 
 	return 0;
