@@ -39,6 +39,8 @@ int main()
 				}
 			}
 			std::cout << "\nMax number you entered: " << get_max_from_vector(iUserValues);
+			iNum = 0; //clears the values in case it gets run again
+			iUserValues.clear();
 		}
 
 		else if (iOption == 2)
