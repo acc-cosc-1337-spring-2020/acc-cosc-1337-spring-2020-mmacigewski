@@ -19,33 +19,27 @@ TEST_CASE("Test Deposit function")
 	REQUIRE(account.iGetBalance() == 500); //TO CHECK
 
 	account.deposit(50);
-
 	REQUIRE(account.iGetBalance() == 550);
 
-	account.deposit(-50);
-
+	REQUIRE_THROWS_AS(account.deposit(-50), Invalid);//this test it for an error!!
 	REQUIRE(account.iGetBalance() == 550);
 }
 
-TEST_CASE("Test Withdraw function")
+TEST_CASE("Test Withdraw function") //if we edit function the test cases should appear green
 {
 	BankAccount account(500);
 
 	REQUIRE(account.iGetBalance() == 500);
 
 	account.withdraw(50);
-
 	REQUIRE(account.iGetBalance() == 450);
 
 	account.withdraw(150);
-
 	REQUIRE(account.iGetBalance() == 300);
 
-	account.withdraw(-1);
+	REQUIRE_THROWS_AS(account.withdraw(800), Invalid);
 
+	REQUIRE_THROWS_AS(account.withdraw(-1), Invalid);
 	REQUIRE(account.iGetBalance() == 300);
 
-	account.withdraw(400000);
-
-	REQUIRE(account.iGetBalance() == 300);
 }

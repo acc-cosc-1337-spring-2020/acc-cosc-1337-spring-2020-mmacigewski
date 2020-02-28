@@ -6,18 +6,39 @@ using std::cin; using std::cout;
 
 int main()
 {
-	auto num{ 0 }; //automatically initializes num to 0 //THIS IS BEST PRACTICE
+	auto num{ 500 }; //automatically initializes num to 0 //THIS IS BEST PRACTICE
+	auto balance{ 0 };
 
 	BankAccount account{ num }; //creates the class object, uses the industry standard
 
-	auto balance = account.iGetBalance(); //auto will give it balance an int type
-	cout << "Balance is: " << balance;
+	cout << "Balance is: " << account.iGetBalance();
 
 	auto amount{ 0 };
-	cout << "Enter deposit amount: ";
+	cout << "\nEnter deposit amount: ";
 	cin >> amount;
 
-	cout << "Balance is: " << balance;
+	try
+	{
+		account.deposit(amount);
+	}
+	catch (Invalid e) //will create the object with the invalid class and print out the error
+	{
+		cout << e.get_error();
+	}
+
+	cout << "Balance is: " << account.iGetBalance();
+
+	cout << "\nEnter withdraw amount: ";
+	cin >> amount;
+
+	try
+	{
+		account.withdraw(amount);
+	}
+	catch(Invalid d)
+	{
+		cout << d.get_error();
+	}
 
 	return 0;
 }
