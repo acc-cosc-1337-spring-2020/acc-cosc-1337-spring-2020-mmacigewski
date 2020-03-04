@@ -34,12 +34,38 @@ TEST_CASE("Test Withdraw function") //if we edit function the test cases should 
 	account.withdraw(50);
 	REQUIRE(account.iGetBalance() == 450);
 
-	account.withdraw(150);
-	REQUIRE(account.iGetBalance() == 300);
-
 	REQUIRE_THROWS_AS(account.withdraw(800), Invalid);
 
 	REQUIRE_THROWS_AS(account.withdraw(-1), Invalid);
-	REQUIRE(account.iGetBalance() == 300);
+	REQUIRE(account.iGetBalance() == 450);
+
+}
+
+TEST_CASE("Test Bank acc default constructor balance 0")
+{
+	BankAccount account;
+
+	REQUIRE(account.iGetBalance() == 0);
+}
+
+TEST_CASE("Test bank account initial open deposit >= 25")
+{
+	BankAccount account;
+
+	REQUIRE(account.iGetBalance() == 0);
+
+	account.open(25);
+	REQUIRE(account.iGetBalance() == 25);
+
+}
+
+TEST_CASE("Test bank account initial open deposit <= 25")
+{
+	BankAccount account;
+
+	REQUIRE(account.iGetBalance() == 0);
+
+
+	REQUIRE_THROWS_AS(account.open(5), Invalid);
 
 }

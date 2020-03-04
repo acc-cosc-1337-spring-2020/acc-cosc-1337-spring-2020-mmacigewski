@@ -1,6 +1,7 @@
 #include "bank_account.h"
 
 #include <iostream>
+#include <vector>
 
 using std::cin; using std::cout;
 
@@ -9,7 +10,15 @@ int main()
 	auto num{ 500 }; //automatically initializes num to 0 //THIS IS BEST PRACTICE
 	auto balance{ 0 };
 
-	BankAccount account{ num }; //creates the class object, uses the industry standard
+	//BankAccount a = 100; //This works, but doesn't want it allowed
+
+	std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) }; //creates an array of accounts
+	for (auto act : accounts)
+	{
+		cout << act.iGetBalance() << "\n";
+	}
+
+	BankAccount account{ num }; //creates the class object, uses the industry standard, explicitley calls it
 
 	cout << "Balance is: " << account.iGetBalance();
 
