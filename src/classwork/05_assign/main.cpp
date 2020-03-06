@@ -22,7 +22,8 @@ int main()
 
 	for (int i = 0; i < rect.size(); ++i)
 	{
-		cout << "Area of Rectangle " << i + 1 << " : " << rect[i].iGetArea() << "\n";
+		cout << "Area of Rectangle " << i + 1 << " : ";
+		cout << rect[i];
 		iTotalArea += rect[i].iGetArea();
 	}
 

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 using std::cin; using std::cout;
 
@@ -13,14 +14,12 @@ int main()
 	//BankAccount a = 100; //This works, but doesn't want it allowed
 
 	std::vector<BankAccount> accounts{ BankAccount(100), BankAccount(200) }; //creates an array of accounts
-	for (auto act : accounts)
-	{
-		cout << act.iGetBalance() << "\n";
-	}
 
 	BankAccount account{ num }; //creates the class object, uses the industry standard, explicitley calls it
 
-	cout << "Balance is: " << account.iGetBalance();
+	display_balance(account);
+	cin >> account;
+	cout << account; //this is operator overloading
 
 	auto amount{ 0 };
 	cout << "\nEnter deposit amount: ";

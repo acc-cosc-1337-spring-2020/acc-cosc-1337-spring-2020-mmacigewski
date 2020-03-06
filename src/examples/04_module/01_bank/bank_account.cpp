@@ -39,3 +39,27 @@ void BankAccount::open(int amount)
 
 	iBalance += amount;
 }
+
+double BankAccount::rate = init_rate(); //allows us to access private variables
+
+void display_balance(const BankAccount & b) //becomes a free function(not part of class)
+{
+	std::cout << "Balance is: " << b.iBalance << "\n";
+}
+
+std::ostream & operator<<(std::ostream & out, const BankAccount & b) //allows us to cout anything about account, the ostream & out is cout
+{
+	out << "Balance is: " << b.iBalance << "\n";
+
+	return out;
+}
+
+std::istream & operator>>(std::istream & in, BankAccount & b)
+{
+	int amount{ 0 };
+	std::cout << "Enter amount: ";
+	in >> amount; //same as std::cin >> 
+	b.deposit(amount); //has direct access to the classes private variables but we do not want to mess up the safeguards we have against protecting it
+
+	return in;
+}

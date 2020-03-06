@@ -10,3 +10,9 @@ void Rect::iCalculateArea()
 {
 	iArea = iWidth * iHeight;
 }
+
+std::ostream & operator<<(std::ostream & out, Rect & r)
+{
+	out << r.iArea << "\n";
+	return out;
+}

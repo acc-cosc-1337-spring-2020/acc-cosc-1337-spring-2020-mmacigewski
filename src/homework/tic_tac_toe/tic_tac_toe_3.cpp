@@ -30,7 +30,7 @@ Win diagonally
 6 7 8
 
 */
-bool TicTacToe3::check_diagonal_win()
+/*bool TicTacToe3::check_diagonal_win()
 {
 	if (pegs[0] == pegs[4] && pegs[4] == pegs[8] && pegs[8] != " ")
 	{
@@ -44,5 +44,5 @@ bool TicTacToe3::check_diagonal_win()
 	{
 		return false;
 	}
-}
+}*/
 
