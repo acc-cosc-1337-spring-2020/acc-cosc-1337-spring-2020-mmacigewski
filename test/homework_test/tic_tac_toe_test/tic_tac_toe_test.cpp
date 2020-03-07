@@ -28,3 +28,38 @@ TEST_CASE("Test set first player to X")
 
 	REQUIRE(game.get_player() == "X");
 }
+
+TEST_CASE("Test set first player to O")
+{
+	Tic_tac_toe game;
+
+	game.start_game("O");
+
+	REQUIRE(game.get_player() == "O");
+}
+
+TEST_CASE("Test start game with X game flow")
+{
+	Tic_tac_toe game;
+
+	game.start_game("X");
+
+	REQUIRE(game.get_player() == "X");
+
+	game.mark_board(4);
+
+	REQUIRE(game.get_player() == "O");
+}
+
+TEST_CASE("Test start game with O game flow")
+{
+	Tic_tac_toe game;
+
+	game.start_game("O");
+
+	REQUIRE(game.get_player() == "O");
+
+	game.mark_board(2);
+
+	REQUIRE(game.get_player() == "X");
+}
