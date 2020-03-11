@@ -1,4 +1,4 @@
-#include "bank_account.h"
+#include "checking_account.h" //still works because we are extending bank_account in checking_account.h
 
 #include <iostream>
 #include <vector>
@@ -8,6 +8,10 @@ using std::cin; using std::cout;
 
 int main()
 {
+	CheckingAccount checking;
+	//CheckingAccount checking(50);
+	
+
 	auto num{ 500 }; //automatically initializes num to 0 //THIS IS BEST PRACTICE
 	auto balance{ 0 };
 

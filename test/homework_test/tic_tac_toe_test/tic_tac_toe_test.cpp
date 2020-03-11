@@ -63,3 +63,18 @@ TEST_CASE("Test start game with O game flow")
 
 	REQUIRE(game.get_player() == "X");
 }
+
+TEST_CASE("Test game ends when board is full")
+{
+	Tic_tac_toe game;
+
+	game.start_game("X");
+
+	for (std::size_t i = 1; i < 9; ++i)
+	{
+		game.mark_board(i);
+		REQUIRE(game.gameOver() == false);
+	}
+	game.mark_board(9);
+	REQUIRE(game.gameOver() == true);
+}

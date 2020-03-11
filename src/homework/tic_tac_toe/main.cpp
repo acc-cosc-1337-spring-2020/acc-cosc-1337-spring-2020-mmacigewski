@@ -31,26 +31,28 @@ int main()
 	}
 
 	//main loop
-	while (isRunning)
+	while (game.gameOver() == !true && isRunning)
 	{
 		try
 		{
 			cout << "Player " <<game.get_player() << " enter a position: ";
 			cin >> position;
+			cout << "\n";
 
 			game.mark_board(position);
-
-			cout << "\nDo you want to continue(y/n): ";
-			cin >> option;
-			std::cout << "\n"; //to add a break in text
-
-			isRunning = option == 'n' ? false : true;
-
+			game.displayBoard();
 		}
+
 		catch(Error e)
 		{
 			cout << e.get_message();
 		}
+
+		cout << "\nDo you want to continue(y/n): ";
+		cin >> option;
+		std::cout << "\n"; //to add a break in text
+
+		isRunning = option == 'n' ? false : true;
 	}
 
 

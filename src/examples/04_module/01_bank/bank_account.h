@@ -2,6 +2,9 @@
 #include <string>
 #include <iostream>
 
+#ifndef BANK_ACCOUNT_H //this is called header guarding(prevents compiler from copying code multiple times)
+#define BANK_ACCOUNT_H
+
 class BankAccount
 {
 public:
@@ -12,7 +15,7 @@ public:
 
 	//int iGetBalance() { return balance; } //THIS CAN BE MODIFIED
 	int iGetBalance() const { return iBalance; } //THIS CAN"T BE MODIFIED DUE TO CONST, do this with GET functions
-	double getRate() { return rate; }
+	double getRate() const { return rate; }
 
 	void deposit(int iAmount);
 	void withdraw(int iAmount);
@@ -27,17 +30,26 @@ public:
 	//we are giving more functionality to cin, allowing us to read write the second arguement which is BankAccount
 	friend std::istream& operator>>(std::istream& in, BankAccount& b);
 
-private:
-
+protected: //classes that extend this class have access to it
 	int iBalance{ 0 }; //ALWAYS INITIALIZE //Intitializes at the moment it is created
+
+private:
+		 
 	const int iMinBalanceToOpen{ 25 }; //constant makes it read only
 
-	static double rate; //persistent in every single instance, needs to be assigned outside of the class, can be accessed outside of the class
+	//Static variables when used inside function are initialized only once, and then they hold there value even through function calls.
+	//These static variables are stored on static storage area
+	static double rate;
+	
 	static double init_rate() { return .025; } //function to initiate rate
 };
 
+#endif
 
 //BAD PRACTICE CREATE A SEPERATE NEXT TIME
+
+#ifndef INVALID_H //this is called header guarding(prevents compiler from copying code multiple times)
+#define INVALID_H
 
 class Invalid
 {
@@ -47,3 +59,5 @@ public:
 private:
 	std::string message;
 };
+
+#endif

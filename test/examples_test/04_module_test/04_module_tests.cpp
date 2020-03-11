@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.hpp"
-#include "bank_account.h"
+#include "bank_account.h" 
+#include "checking_account.h"
 
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
@@ -75,4 +76,18 @@ TEST_CASE("Test BankAccount static rate initialization")
 	BankAccount account;
 
 	REQUIRE(account.getRate() == 0.025);
+}
+
+TEST_CASE("Test Checking account Constructor")
+{
+	CheckingAccount account(500);
+
+	REQUIRE(account.iGetBalance() == 512); //different than BankAccount iGetBalance due to function being overidden
+}
+
+TEST_CASE("Test Checkingaccount get balance")
+{
+	CheckingAccount account(150);
+
+	REQUIRE(account.iGetBalance() == 153); //different than BankAccount iGetBalance due to function being overidden
 }
