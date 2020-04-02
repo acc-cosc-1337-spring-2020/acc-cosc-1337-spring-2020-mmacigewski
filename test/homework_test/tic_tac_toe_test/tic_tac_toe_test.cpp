@@ -64,7 +64,7 @@ TEST_CASE("Test start game with O game flow")
 	REQUIRE(game.get_player() == "X");
 }
 
-TEST_CASE("Test game ends when board is full")
+/*TEST_CASE("Test game ends when board is full")
 {
 	Tic_tac_toe game;
 
@@ -77,4 +77,29 @@ TEST_CASE("Test game ends when board is full")
 	}
 	game.mark_board(9);
 	REQUIRE(game.gameOver() == true);
+}*/
+
+TEST_CASE("Test win by first column", "[X wins first column]")
+{ /* Tic Tac Toe Board
+		123
+		456
+		789
+
+	   First column win are user positions 1,4, and 7
+vector view: 0, 3, and 6
+	   */
+	Tic_tac_toe board;
+	board.start_game("X");
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(1);//X        
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(2);//O          
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(4);//X          
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(5);//O          
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(7);//X
+	//X wins
+	REQUIRE(board.gameOver() == true);
 }

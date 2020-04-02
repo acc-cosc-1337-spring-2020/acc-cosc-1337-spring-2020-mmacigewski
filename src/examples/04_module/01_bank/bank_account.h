@@ -10,7 +10,7 @@ class BankAccount
 public:
 	//c++ automatically creates a default constructor if one is not made
 
-	BankAccount() = default;//default constructor, BEST PRACTICE says I want you to stay as default constructor
+	BankAccount() = default;//default constructor, BEST PRACTICE says I want you to stay as default constructor, does nothing
 	explicit BankAccount(int iNum) : iBalance{ iNum } {}; //HOW IT IS DONE IN INDUSTRY, to use this constructor you have to expilicitly call it
 
 	//int iGetBalance() { return balance; } //THIS CAN BE MODIFIED

@@ -40,7 +40,23 @@ void Tic_tac_toe::displayBoard() const
 
 bool Tic_tac_toe::gameOver()
 {
-	return checkBoardFull();
+	if (checkCheckRowWin() == true || checkColumnWin() == true || checkDiagonalWin() == true)
+	{
+		return true;
+	}
+	else if (checkBoardFull() == true)
+	{
+		return true;
+	}
+	else if (get_winner() != "X" && get_winner() != "O" && checkBoardFull() == true)
+	{
+		winner = "C";
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 
@@ -50,6 +66,69 @@ bool Tic_tac_toe::gameOver()
 void Tic_tac_toe::set_next_player()
 {
 	player = player == "X" ? "O" : "X"; //ternary for if player value is X it will set it to O, otherwise it will set it to X
+}
+
+bool Tic_tac_toe::checkColumnWin()
+{
+	if ((pegs[0] == "X" && pegs[3] == "X" && pegs[6] == "X") || (pegs[1] == "X" && pegs[4] == "X" && pegs[7] == "X") || (pegs[2] == "X" && pegs[5] == "X" && pegs[8] == "X"))
+	{
+		if (get_player() != "X")
+		{
+			setWinner();
+			return true;
+		}
+	}
+	else if ((pegs[0] == "O" && pegs[3] == "O" && pegs[6] == "O") || (pegs[1] == "O" && pegs[4] == "O" && pegs[7] == "O") || (pegs[2] == "O" && pegs[5] == "O" && pegs[8] == "O"))
+	{
+		if (get_player() != "O")
+		{
+			setWinner();
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Tic_tac_toe::checkCheckRowWin()
+{
+	if ((pegs[0] == "X" && pegs[1] == "X" && pegs[2] == "X") || (pegs[3] == "X" && pegs[4] == "X" && pegs[5] == "X") || (pegs[6] == "X" && pegs[7] == "X" && pegs[8] == "X"))
+	{
+		if (get_player() != "X")
+		{
+			setWinner();
+			return true;
+		}
+	}
+	else if((pegs[0] == "O" && pegs[1] == "O" && pegs[2] == "O") || (pegs[3] == "O" && pegs[4] == "O" && pegs[5] == "O") || (pegs[6] == "O" && pegs[7] == "O" && pegs[8] == "O"))
+	{
+		if (get_player() != "O")
+		{
+			setWinner();
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Tic_tac_toe::checkDiagonalWin()
+{
+	if ((pegs[0] == "X" && pegs[4] == "X" && pegs[8] == "X") || (pegs[6] == "X" && pegs[4] == "X" && pegs[2] == "X"))
+	{
+		if (get_player() != "X")
+		{
+			setWinner();
+			return true;
+		}
+	}
+	else if ((pegs[0] == "O" && pegs[4] == "O" && pegs[8] == "O") || (pegs[6] == "O" && pegs[4] == "O" && pegs[2] == "O"))
+	{
+		if (get_player() != "O")
+		{
+			setWinner();
+			return true;
+		}
+	}
+	return false;
 }
 
 bool Tic_tac_toe::checkBoardFull() //checks board if its full, if there is a space it is not full.
@@ -71,4 +150,11 @@ void Tic_tac_toe::clearBoard()
 	{
 		peg = " ";
 	}
+}
+
+void Tic_tac_toe::setWinner()
+{
+
+	winner = get_player() == "X" ? "O" : "X";
+
 }

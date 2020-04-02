@@ -31,7 +31,7 @@ int main()
 	}
 
 	//main loop
-	while (game.gameOver() == !true && isRunning)
+	while (game.gameOver() == false && isRunning)
 	{
 		try
 		{
@@ -48,11 +48,19 @@ int main()
 			cout << e.get_message();
 		}
 
-		cout << "\nDo you want to continue(y/n): ";
-		cin >> option;
-		std::cout << "\n"; //to add a break in text
+		if (game.gameOver() == false)
+		{
+			cout << "\nDo you want to continue(y/n): ";
+			cin >> option;
+			std::cout << "\n"; //to add a break in text
 
-		isRunning = option == 'n' ? false : true;
+			isRunning = option == 'n' ? false : true;
+		}
+		else
+		{
+			cout << "\nPlayer " << game.get_winner() << " has won the game!";
+			isRunning = false;
+		}
 	}
 
 

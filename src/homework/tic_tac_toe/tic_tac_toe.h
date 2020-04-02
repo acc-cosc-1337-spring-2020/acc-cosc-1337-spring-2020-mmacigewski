@@ -14,14 +14,21 @@ public:
 	void displayBoard() const;
 
 	string get_player() const { return player; }
+	string get_winner() const { return winner; }
 
 private: //most logic goes within the private functions
 
-	void set_next_player();
+	bool checkColumnWin();
+	bool checkCheckRowWin();
+	bool checkDiagonalWin();
 	bool checkBoardFull();
+
+	void set_next_player();
 	void clearBoard();
+	void setWinner();
 
 	string player;
+	string winner;
 	std::vector<string> pegs{ 9 , " " }; //initializes a vector of 9 elements with each being a space.
 
 };

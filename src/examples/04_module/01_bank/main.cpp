@@ -8,7 +8,7 @@ using std::cin; using std::cout;
 
 int main()
 {
-	CheckingAccount checking;
+	CheckingAccount checking; //without default constrcutor, this will not execute
 	//CheckingAccount checking(50);
 	
 
