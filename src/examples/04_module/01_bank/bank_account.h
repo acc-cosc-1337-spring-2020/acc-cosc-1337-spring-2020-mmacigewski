@@ -14,7 +14,8 @@ public:
 	explicit BankAccount(int iNum) : iBalance{ iNum } {}; //HOW IT IS DONE IN INDUSTRY, to use this constructor you have to expilicitly call it
 
 	//int iGetBalance() { return balance; } //THIS CAN BE MODIFIED
-	int iGetBalance() const { return iBalance; } //THIS CAN"T BE MODIFIED DUE TO CONST, do this with GET functions
+	//virtual makes this wait to execute until program runs, compiler will figure out which to use.
+	virtual int iGetBalance() const { return iBalance; } //THIS CAN"T BE MODIFIED DUE TO CONST, do this with GET functions
 	double getRate() const { return rate; }
 
 	void deposit(int iAmount);
