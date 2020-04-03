@@ -48,7 +48,7 @@ bool Tic_tac_toe::gameOver()
 	{
 		return true;
 	}
-	else if (get_winner() != "X" && get_winner() != "O" && checkBoardFull() == true)
+	else if ((get_winner() != "X" && get_winner() != "O") && checkBoardFull() == true)
 	{
 		winner = "C";
 		return true;

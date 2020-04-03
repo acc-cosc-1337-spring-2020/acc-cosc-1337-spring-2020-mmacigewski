@@ -59,7 +59,11 @@ int main()
 		else
 		{
 			cout << "\nPlayer " << game.get_winner() << " has won the game!";
-			isRunning = false;
+			std::cout << "Do you want to play again?\n";
+			cin >> option;
+			std::cout << "\n"; //to add a break in text
+
+			isRunning = option == 'n' ? false : true;
 		}
 	}
 

@@ -24,13 +24,13 @@ int main()
 	unique_ptr<BankAccount> s = make_unique<SavingsAccount>(500); //creates dynamic memory for us 
 	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
 
-	std::vector<unique_ptr<BankAccount>> accounts{ std::move(s), std::move(c) }; //creates a vector of unique pointers to BankAccount
+	//std::vector<unique_ptr<BankAccount>> accounts{ std::move(s), std::move(c) }; //creates a vector of unique pointers to BankAccount
 	//std::move transfers ownership from main to the vector
 
-	for (auto& act : accounts)
-	{
-		cout << act->iGetBalance() << "\n"; //the -> points to the derived class functions
-	}
+	//for (auto& act : accounts)
+	//{
+	//	cout << act->iGetBalance() << "\n"; //the -> points to the derived class functions
+	//}
 
 
 	//SavingsAccount sNone; //creates a account with balance of 0
