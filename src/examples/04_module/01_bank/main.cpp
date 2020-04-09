@@ -25,8 +25,8 @@ int main()
 	//unique pointers only have 1 parent, so these are owned by main
 	//The pointer is to bankaccount 
 
-	unique_ptr<BankAccount> s = make_unique<SavingsAccount>(500); //creates dynamic memory for us 
-	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
+	//unique_ptr<BankAccount> s = make_unique<SavingsAccount>(500); //creates dynamic memory for us 
+	//unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
 
 	//std::vector<unique_ptr<BankAccount>> accounts{ std::move(s), std::move(c) }; //creates a vector of unique pointers to BankAccount
 	//std::move transfers ownership from main to the vector

@@ -1,4 +1,5 @@
-//h
+#pragma once
+
 #include <string>
 #include <vector>
 
@@ -11,10 +12,14 @@ public:
 	bool gameOver();
 	void start_game(std::string first_player);
 	void mark_board(int position);
-	void displayBoard() const;
+
+	friend std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& t);
+	friend std::istream& operator>>(std::istream& in, Tic_tac_toe& b);
 
 	string get_player() const { return player; }
 	string get_winner() const { return winner; }
+
+
 
 private: //most logic goes within the private functions
 

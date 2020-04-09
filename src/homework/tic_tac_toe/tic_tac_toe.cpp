@@ -4,7 +4,7 @@
 #include "tic_tac_toe.h"
 #include <iostream>
 
-//cpp
+//PUBLIC FUNCTIONS
 
 void Tic_tac_toe::start_game(std::string first_player)
 {
@@ -27,18 +27,30 @@ void Tic_tac_toe::mark_board(int position)
 		throw Error("Must start game first.\n");
 	} 
 	else
-	{ 
+	{
 		pegs[position - 1] = player; //minus one for the index
-		set_next_player(); 
+		if (gameOver() == false) { set_next_player(); }
 	}
 }
 
-void Tic_tac_toe::displayBoard() const
+std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& b) 
 {
+	std::cout << "\n"; //formatting purposes
 	for (std::size_t i = 0; i < 9; i += 3) // += 3 for new row
 	{
-		std::cout << pegs[i] + " | " + pegs[i + 1] + " | " + pegs[i + 2] + "\n";
+		out << b.pegs[i] + " | " + b.pegs[i + 1] + " | " + b.pegs[i + 2] + "\n";
 	}
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, Tic_tac_toe& b)
+{
+	int pos{ 0 };
+	std::cout << "Player " << b.get_player() << " enter a position: ";
+	in >> pos;
+	b.mark_board(pos);
+
+	return in;
 }
 
 bool Tic_tac_toe::gameOver()
@@ -47,19 +59,17 @@ bool Tic_tac_toe::gameOver()
 	{
 		return true;
 	}
-	else if (checkBoardFull() == true)
+	if (checkBoardFull() == true)
 	{
 		return true;
 	}
-	else if ((get_winner() != "X" && get_winner() != "O") && checkBoardFull() == true)
+	if ((get_winner() != "X" && get_winner() != "O") && checkBoardFull() == true)
 	{
 		winner = "C";
 		return true;
 	}
-	else
-	{
 		return false;
-	}
+	
 }
 
 
@@ -136,9 +146,17 @@ bool Tic_tac_toe::checkDiagonalWin()
 
 bool Tic_tac_toe::checkBoardFull() //checks board if its full, if there is a space it is not full.
 {
-	for (std::size_t i = 0; i < pegs.size(); ++i)
+	/*for (int i = 0; i < pegs.size(); i++)
 	{
 		if (pegs[i] == " ")
+		{
+			return false;
+		}
+	}*/
+
+	for (auto& peg : pegs)
+	{
+		if (peg == " ")
 		{
 			return false;
 		}

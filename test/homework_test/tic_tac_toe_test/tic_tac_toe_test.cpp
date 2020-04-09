@@ -81,6 +81,7 @@ vector view: 0, 3, and 6
 	board.mark_board(7);//X
 	//X wins
 	REQUIRE(board.gameOver() == true);
+	REQUIRE(board.get_winner() == "X");
 }
 
 TEST_CASE("Test win by first row", "[X wins first row]")
@@ -220,22 +221,23 @@ vector view: 0, 3, and 6
 	Tic_tac_toe board;
 	board.start_game("X");
 	REQUIRE(board.gameOver() == false);
-	board.mark_board(2);//X        
+	board.mark_board(2);//X  1      
 	REQUIRE(board.gameOver() == false);
-	board.mark_board(1);//O          
+	board.mark_board(1);//O  2       
 	REQUIRE(board.gameOver() == false);
-	board.mark_board(3);//X          
+	board.mark_board(3);//X  3      
 	REQUIRE(board.gameOver() == false);
-	board.mark_board(6);//O          
+	board.mark_board(6);//O  4     
 	REQUIRE(board.gameOver() == false);
-	board.mark_board(5);//X
+	board.mark_board(5);//X  5
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(8);//O  6      
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(9);//X  7
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(7);//O  8      
+	REQUIRE(board.gameOver() == false);
+	board.mark_board(4);//XX  9
 	REQUIRE(board.gameOver() == true);
-	board.mark_board(8);//X        
-	REQUIRE(board.gameOver() == false);
-	board.mark_board(9);//O
-	REQUIRE(board.gameOver() == false);
-	board.mark_board(7);//X        
-	REQUIRE(board.gameOver() == false);
-	board.mark_board(4);//O
-	REQUIRE(board.gameOver() == true);
+
 }
