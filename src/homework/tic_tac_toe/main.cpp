@@ -68,7 +68,7 @@ int main()
 			cin >> option;
 			std::cout << "\n"; //to add a break in text
 
-			error = true; //allows for resetting of board!
+			error = true; //allows for resetting of board
 
 			isRunning = option == 'n' ? false : true;
 		}
