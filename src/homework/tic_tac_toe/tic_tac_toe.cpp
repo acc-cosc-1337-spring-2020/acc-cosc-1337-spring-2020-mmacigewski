@@ -1,3 +1,6 @@
+#ifndef TIC_TAC_TOE_H
+#define TIC_TAC_TOE_H
+
 #include "tic_tac_toe.h"
 #include <iostream>
 
@@ -158,3 +161,5 @@ void Tic_tac_toe::setWinner()
 	winner = get_player() == "X" ? "O" : "X";
 
 }
+
+#endif

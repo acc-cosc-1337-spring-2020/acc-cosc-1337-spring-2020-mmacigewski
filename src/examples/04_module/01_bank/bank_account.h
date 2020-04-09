@@ -5,6 +5,8 @@
 #ifndef BANK_ACCOUNT_H //this is called header guarding(prevents compiler from copying code multiple times)
 #define BANK_ACCOUNT_H
 
+//abstract class
+
 class BankAccount
 {
 public:
@@ -15,7 +17,10 @@ public:
 
 	//int iGetBalance() { return balance; } //THIS CAN BE MODIFIED
 	//virtual makes this wait to execute until program runs, compiler will figure out which to use.
-	virtual int iGetBalance() const { return iBalance; } //THIS CAN"T BE MODIFIED DUE TO CONST, do this with GET functions
+	//NEEDS TO BE DEFINED WITHIN THE .cpp
+	//the = 0, makes it a pure virtual function, any pure virtual function makes the class abstract***
+	
+	virtual int iGetBalance() const = 0; //THIS CAN"T BE MODIFIED DUE TO CONST, do this with GET functions
 	double getRate() const { return rate; }
 
 	void deposit(int iAmount);

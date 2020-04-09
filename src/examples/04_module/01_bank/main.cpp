@@ -1,5 +1,6 @@
 #include "checking_account.h" //still works because we are extending bank_account in checking_account.h
 #include "savings_account.h"
+#include "customer.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -10,6 +11,8 @@ using std::unique_ptr; using std::make_unique; //Allows us to create a unique po
 
 int main()
 {
+	//abstract is base class, concrete is base class
+	
 	/*
 	//This is legacy code C++ 98
 	SavingsAccount* sav = new SavingsAccount(500); //creates a pointer to savingsaccount type(STORED ON HEAP)
@@ -20,6 +23,7 @@ int main()
 
 	//Same example as above, C++ 11     aka smart pointers
 	//unique pointers only have 1 parent, so these are owned by main
+	//The pointer is to bankaccount 
 
 	unique_ptr<BankAccount> s = make_unique<SavingsAccount>(500); //creates dynamic memory for us 
 	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
@@ -32,6 +36,14 @@ int main()
 	//	cout << act->iGetBalance() << "\n"; //the -> points to the derived class functions
 	//}
 
+
+	//We do not want a user to create a bank account class, BUT a pointer is okay!
+	//So this is going to mark as error due to it being a pure virtual function
+
+	//BankAccount account(500); //should model the real world, this is AN ABSTRACT CLASS, shouldn't let users create it
+	
+	//Customer cust;
+	//cust.add_account(account); //adds account to the customer class
 
 	//SavingsAccount sNone; //creates a account with balance of 0
 	//CheckingAccount checking; //without default constrcutor, this will not execute
@@ -46,9 +58,7 @@ int main()
 
 //	std::vector<BankAccount> accountss{ s, checking }; //this is polymorphism, the BankAccount can hold sub classes
 
-	BankAccount account{ num }; //creates the class object, uses the industry standard, explicitley calls it
-
-	display_balance(account);
+	CheckingAccount account{ 500 };
 	cin >> account;
 	cout << account; //this is operator overloading
 

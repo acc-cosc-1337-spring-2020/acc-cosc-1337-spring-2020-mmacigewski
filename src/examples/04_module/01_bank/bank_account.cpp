@@ -2,6 +2,11 @@
 
 //bank_account.cpp
 
+int BankAccount::iGetBalance() const
+{
+	return iBalance;
+}
+
 void BankAccount::deposit(int amount)
 {
 	if (amount > 0)//checks to make sure you can't input a negative amount 
