@@ -4,9 +4,12 @@
 std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 {
 	int x_win{ 0 }, o_win{ 0 }, ties{ 0 };
+	std::string option{ "" };
+
 	for (auto game : manager.games)
 	{
-		out << game; //"DisplayBoard" function
+		out << game;
+
 		if (game.get_winner() == "X")
 		{
 			x_win++;
@@ -17,6 +20,7 @@ std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 		}
 		else { ties++; }
 	}
+
 	out << "\nX wins: " << x_win << ", O wins: " << o_win << ", ties: " << ties << "\n";
 	return out;
 }

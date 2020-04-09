@@ -16,7 +16,7 @@ int main()
 	int position;
 	char option{ ' ' };
 
-	cout << "Player 1, X or O: ";
+
 
 	//main loop
 	while (isRunning)
@@ -24,6 +24,7 @@ int main()
 		//allows for constant looping to get user to input X or O. So program wont blow up
 		while (error)
 		{
+			cout << "Player 1, X or O: ";
 			cin >> playerOption;
 			try
 			{
@@ -58,13 +59,16 @@ int main()
 		}
 		else
 		{
-			manager.save_game(game);
+			manager.save_game(game);//saves game instance
+
 			cout << "\nPlayer " << game.get_winner() << " has won the game!";
-			cout << "\n\n" << manager;
+
+			cout << "\n\n" << manager; //displays board
 			std::cout << "\nDo you want to play again(Y/n): ";
 			cin >> option;
 			std::cout << "\n"; //to add a break in text
 
+			error = true; //allows for resetting of board!
 
 			isRunning = option == 'n' ? false : true;
 		}
