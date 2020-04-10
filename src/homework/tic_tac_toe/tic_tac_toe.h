@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 
+
 using std::string;
 
 class Tic_tac_toe
@@ -51,3 +52,4 @@ private:
 	string message;
 
 };
+

@@ -1,6 +1,7 @@
 #include "checking_account.h" //still works because we are extending bank_account in checking_account.h
 #include "savings_account.h"
 #include "customer.h"
+#include "atm.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,7 +27,13 @@ int main()
 	//The pointer is to bankaccount 
 
 	//unique_ptr<BankAccount> s = make_unique<SavingsAccount>(500); //creates dynamic memory for us 
-	//unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100);
+	unique_ptr<BankAccount> c = make_unique<CheckingAccount>(100); //heap variables
+	//needs to be dereferenced to print
+	c->deposit(50); //says  I know you're a pointer so I am going to point to the function
+
+
+	CheckingAccount account{ 500 }; //stack variable
+
 
 	//std::vector<unique_ptr<BankAccount>> accounts{ std::move(s), std::move(c) }; //creates a vector of unique pointers to BankAccount
 	//std::move transfers ownership from main to the vector
@@ -42,13 +49,15 @@ int main()
 
 	//BankAccount account(500); //should model the real world, this is AN ABSTRACT CLASS, shouldn't let users create it
 	
-	//Customer cust;
-	//cust.add_account(account); //adds account to the customer class
+	Customer cust;
+	cust.add_account(c); //adds account to the customer class
 
 	//SavingsAccount sNone; //creates a account with balance of 0
 	//CheckingAccount checking; //without default constrcutor, this will not execute
 	CheckingAccount checking(20);
 	
+	ATM atm(cust);
+	cout << atm;
 
 	auto num{ 500 }; //automatically initializes num to 0 //THIS IS BEST PRACTICE
 
@@ -58,7 +67,7 @@ int main()
 
 //	std::vector<BankAccount> accountss{ s, checking }; //this is polymorphism, the BankAccount can hold sub classes
 
-	CheckingAccount account{ 500 };
+	
 	cin >> account;
 	cout << account; //this is operator overloading
 

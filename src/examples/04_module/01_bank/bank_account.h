@@ -18,7 +18,7 @@ public:
 	//int iGetBalance() { return balance; } //THIS CAN BE MODIFIED
 	//virtual makes this wait to execute until program runs, compiler will figure out which to use.
 	//NEEDS TO BE DEFINED WITHIN THE .cpp
-	//the = 0, makes it a pure virtual function, any pure virtual function makes the class abstract***
+	//*****************the = 0, makes it a pure virtual function, any pure virtual function makes the class abstract***
 	
 	virtual int iGetBalance() const = 0; //THIS CAN"T BE MODIFIED DUE TO CONST, do this with GET functions
 	double getRate() const { return rate; }
