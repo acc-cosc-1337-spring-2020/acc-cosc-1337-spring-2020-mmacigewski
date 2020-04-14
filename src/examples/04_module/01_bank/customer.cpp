@@ -13,4 +13,5 @@ std::ostream& operator<<(std::ostream& out, const Customer& c)
 		out << *account << "\n";//no need to call function, because of the ostream overloading, in the current situation wihtout the 
 		//* it will display address, the * dereferences it to the value
 	}
+	return out;
 }

@@ -17,7 +17,7 @@ public:
 
 private:
 
-	std::vector<Tic_tac_toe> games;
+	std::vector<std::reference_wrapper<Tic_tac_toe>> games;
 
 	int x_win{ 0 };
 	int o_win{ 0 };

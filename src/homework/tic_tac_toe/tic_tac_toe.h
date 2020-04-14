@@ -10,6 +10,8 @@ class Tic_tac_toe
 {
 public:
 
+	Tic_tac_toe(int size) : pegs((size* size), " ") {} //multiply 3 or 4 by itself for 9 or 16
+
 	bool gameOver();
 	void start_game(std::string first_player);
 	void mark_board(int position);
@@ -20,22 +22,25 @@ public:
 	string get_player() const { return player; }
 	string get_winner() const { return winner; }
 
+protected:
+
+	std::vector<string> pegs{}; //initializes a vector of x elements with each being a space.
+	virtual bool checkColumnWin();
+	virtual bool checkCheckRowWin();
+	virtual bool checkDiagonalWin();
+	virtual void setWinner();
 
 
 private: //most logic goes within the private functions
 
-	bool checkColumnWin();
-	bool checkCheckRowWin();
-	bool checkDiagonalWin();
-	bool checkBoardFull();
 
+	bool checkBoardFull();
 	void set_next_player();
 	void clearBoard();
-	void setWinner();
+
 
 	string player;
 	string winner;
-	std::vector<string> pegs{ 9 , " " }; //initializes a vector of 9 elements with each being a space.
 
 };
 

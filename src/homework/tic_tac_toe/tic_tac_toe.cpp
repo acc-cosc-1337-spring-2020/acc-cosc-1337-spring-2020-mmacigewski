@@ -28,7 +28,7 @@ void Tic_tac_toe::mark_board(int position)
 	} 
 	else
 	{
-		pegs[position - 1] = player; //minus one for the index
+		pegs[(position - 1)] = player; //minus one for the index
 		if (gameOver() == false) { set_next_player(); }
 	}
 }
@@ -83,64 +83,16 @@ void Tic_tac_toe::set_next_player()
 
 bool Tic_tac_toe::checkColumnWin()
 {
-	if ((pegs[0] == "X" && pegs[3] == "X" && pegs[6] == "X") || (pegs[1] == "X" && pegs[4] == "X" && pegs[7] == "X") || (pegs[2] == "X" && pegs[5] == "X" && pegs[8] == "X"))
-	{
-		if (get_player() != "X")
-		{
-			setWinner();
-			return true;
-		}
-	}
-	else if ((pegs[0] == "O" && pegs[3] == "O" && pegs[6] == "O") || (pegs[1] == "O" && pegs[4] == "O" && pegs[7] == "O") || (pegs[2] == "O" && pegs[5] == "O" && pegs[8] == "O"))
-	{
-		if (get_player() != "O")
-		{
-			setWinner();
-			return true;
-		}
-	}
 	return false;
 }
 
 bool Tic_tac_toe::checkCheckRowWin()
 {
-	if ((pegs[0] == "X" && pegs[1] == "X" && pegs[2] == "X") || (pegs[3] == "X" && pegs[4] == "X" && pegs[5] == "X") || (pegs[6] == "X" && pegs[7] == "X" && pegs[8] == "X"))
-	{
-		if (get_player() != "X")
-		{
-			setWinner();
-			return true;
-		}
-	}
-	else if((pegs[0] == "O" && pegs[1] == "O" && pegs[2] == "O") || (pegs[3] == "O" && pegs[4] == "O" && pegs[5] == "O") || (pegs[6] == "O" && pegs[7] == "O" && pegs[8] == "O"))
-	{
-		if (get_player() != "O")
-		{
-			setWinner();
-			return true;
-		}
-	}
 	return false;
 }
 
 bool Tic_tac_toe::checkDiagonalWin()
 {
-	if ((pegs[0] == "X" && pegs[4] == "X" && pegs[8] == "X") || (pegs[6] == "X" && pegs[4] == "X" && pegs[2] == "X"))
-	{
-		if (get_player() != "X")
-		{
-			setWinner();
-			return true;
-		}
-	}
-	else if ((pegs[0] == "O" && pegs[4] == "O" && pegs[8] == "O") || (pegs[6] == "O" && pegs[4] == "O" && pegs[2] == "O"))
-	{
-		if (get_player() != "O")
-		{
-			setWinner();
-			return true;
-		}
-	}
 	return false;
 }
 
