@@ -1,4 +1,4 @@
-#include "tic_tac_toe.h"
+//#include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
@@ -29,11 +29,13 @@ int main()
 
 		if (playerInt == 3)
 		{
+			cout << "Executing tic tac toe 3";
 			tic_tac_toe_3 game3;
 			games.push_back(game3);
 		}
 		else if (playerInt == 4)
 		{
+			cout << "Executing tic tac toe 4";
 			tic_tac_toe_4 game4;
 			games.push_back(game4);
 		}

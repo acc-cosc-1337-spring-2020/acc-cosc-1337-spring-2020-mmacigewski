@@ -10,7 +10,7 @@ class Tic_tac_toe
 {
 public:
 
-	Tic_tac_toe(int size) : pegs((size* size), " ") {} //multiply 3 or 4 by itself for 9 or 16
+	Tic_tac_toe(int size) : pegs((size* size), "") {} //multiply 3 or 4 by itself for 9 or 16
 
 	bool gameOver();
 	void start_game(std::string first_player);
