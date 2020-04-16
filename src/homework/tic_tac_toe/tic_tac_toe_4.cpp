@@ -93,23 +93,3 @@ bool tic_tac_toe_4::checkDiagonalWin()
 	}
 	return false;
 }
-
-std::ostream& operator<<(std::ostream& out, const tic_tac_toe_4& b)
-{
-	std::cout << "\n"; //formatting purposes
-	for (std::size_t i = 0; i < 9; i += 3) // += 3 for new row
-	{
-		out << b.pegs[i] + " | " + b.pegs[i + 1] + " | " + b.pegs[i + 2] + "\n";
-	}
-	return out;
-}
-
-std::istream& operator>>(std::istream& in, tic_tac_toe_4& b)
-{
-	int pos{ 0 };
-	std::cout << "Player " << b.get_player() << " enter a position: ";
-	in >> pos;
-	b.mark_board(pos);
-
-	return in;
-}

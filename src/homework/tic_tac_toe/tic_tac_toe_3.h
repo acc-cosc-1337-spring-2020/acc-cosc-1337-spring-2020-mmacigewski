@@ -6,14 +6,12 @@
 
 #include <iostream>
 
-class tic_tac_toe_3 : public Tic_tac_toe 
+class Tic_tac_toe_3 : public Tic_tac_toe 
 {
 public:
 
-	tic_tac_toe_3() : Tic_tac_toe(3) {}//initializes the pegs to 9
+	Tic_tac_toe_3() : Tic_tac_toe(3) { }//initializes the pegs to 9
 
-	friend std::ostream& operator<<(std::ostream& out, const tic_tac_toe_3& t);
-	friend std::istream& operator>>(std::istream& in, tic_tac_toe_3& b);
 
 private:
 

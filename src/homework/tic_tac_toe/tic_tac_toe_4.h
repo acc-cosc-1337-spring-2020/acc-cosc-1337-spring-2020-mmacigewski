@@ -11,10 +11,8 @@ class tic_tac_toe_4 : public Tic_tac_toe
 
 public:
 
-	tic_tac_toe_4() : Tic_tac_toe(4) {}
+	tic_tac_toe_4() : Tic_tac_toe(4) { std::cout << "Passing to constructor"; }
 
-	friend std::ostream& operator<<(std::ostream& out, const tic_tac_toe_4& t);
-	friend std::istream& operator>>(std::istream& in, tic_tac_toe_4& b);
 
 private:
 

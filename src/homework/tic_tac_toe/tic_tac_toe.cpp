@@ -45,6 +45,7 @@ std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& b)
 
 std::istream& operator>>(std::istream& in, Tic_tac_toe& b)
 {
+	std::cout << "Pegs size" << b.pegs.size();
 	int pos{ 0 };
 	std::cout << "Player " << b.get_player() << " enter a position: ";
 	in >> pos;
@@ -98,14 +99,6 @@ bool Tic_tac_toe::checkDiagonalWin()
 
 bool Tic_tac_toe::checkBoardFull() //checks board if its full, if there is a space it is not full.
 {
-	/*for (int i = 0; i < pegs.size(); i++)
-	{
-		if (pegs[i] == " ")
-		{
-			return false;
-		}
-	}*/
-
 	for (auto& peg : pegs)
 	{
 		if (peg == " ")
@@ -127,9 +120,7 @@ void Tic_tac_toe::clearBoard()
 
 void Tic_tac_toe::setWinner()
 {
-
 	winner = get_player() == "X" ? "O" : "X";
-
 }
 
 #endif
