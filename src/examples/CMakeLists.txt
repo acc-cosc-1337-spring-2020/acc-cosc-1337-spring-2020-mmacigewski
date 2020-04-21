@@ -9,5 +9,5 @@ ADD_SUBDIRECTORY(04_module)
 #ADD_SUBDIRECTORY(08_module)
 #ADD_SUBDIRECTORY(09_module)
 #ADD_SUBDIRECTORY(10_module)
-#ADD_SUBDIRECTORY(11_module) #comment out later
+ADD_SUBDIRECTORY(11_module) #comment out later
 #ADD_SUBDIRECTORY(12_module)

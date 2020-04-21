@@ -5,7 +5,7 @@ using std::cout;
 
 int main() 
 {
-	int r = 0; p = o;
+	int r = 0, p = 0;
 	int* ref_r = &r;
 
 

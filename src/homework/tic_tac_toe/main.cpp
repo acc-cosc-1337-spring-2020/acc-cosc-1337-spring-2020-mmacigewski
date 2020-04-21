@@ -12,6 +12,9 @@ using std::cout; using std::cin;
 int main() 
 {
 	std::vector <std::reference_wrapper<Tic_tac_toe>> games;
+
+	std::unique_ptr<Tic_tac_toe> tic_ptr;
+
 	TicTacToeManager manager;
 
 	string playerOption{ "" };
@@ -36,12 +39,16 @@ int main()
 			cout << "Executing tic tac toe 3";
 			
 			games.push_back(game3);
+
+			//for later tic_ptr = make_unique<Tic_tac_toe_3>;
+
 		}
 		else if (playerInt == 4)
 		{
 			cout << "Executing tic tac toe 4";
 			games.push_back(game4);
 		}
+
 
 		//allows for constant looping to get user to input X or O. So program wont blow up
 		while (error)
@@ -50,7 +57,7 @@ int main()
 			cin >> playerOption;
 			try
 			{
-				games[games.size() - 1].get().start_game(playerOption); //the .get gets the stored reference
+				//for later*games[games.size() - 1].get().start_game(playerOption); //the .get gets the stored reference
 				error = false;
 				cout << "\n"; //to add a break in the text
 			}
