@@ -28,17 +28,18 @@ int main()
 
 		cout << "Tic Tac Toe game 3 or 4: ";
 		cin >> playerInt;
+		Tic_tac_toe_3 game3;
+		tic_tac_toe_4 game4;
 
 		if (playerInt == 3)
 		{
 			cout << "Executing tic tac toe 3";
-			Tic_tac_toe_3 game3;
+			
 			games.push_back(game3);
 		}
 		else if (playerInt == 4)
 		{
 			cout << "Executing tic tac toe 4";
-			tic_tac_toe_4 game4;
 			games.push_back(game4);
 		}
 
@@ -59,16 +60,19 @@ int main()
 			}
 		}
 
-		try
+		do
 		{
-			cin >> games[games.size() - 1].get();
-			cout << games[games.size() - 1].get();
-		}
+			try
+			{
+				cin >> games[games.size() - 1].get();
+				cout << games[games.size() - 1].get();
+			}
 
-		catch(Error e)
-		{
-			cout << e.get_message();
-		}
+			catch (Error e)
+			{
+				cout << e.get_message();
+			}
+		} while (!games[games.size() - 1].get().gameOver());
 
 		if (games[games.size() - 1].get().gameOver() == false)
 		{

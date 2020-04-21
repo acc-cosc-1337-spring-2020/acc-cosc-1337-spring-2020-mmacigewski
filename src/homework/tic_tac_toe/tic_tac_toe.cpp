@@ -18,9 +18,13 @@ void Tic_tac_toe::start_game(std::string first_player)
 
 void Tic_tac_toe::mark_board(int position)
 {
-	if (position < 1 || position > 9)
+	if (position < 1 || position > 9 && pegs.size() == 9)
 	{
 		throw Error("Position must be 1 to 9.\n");
+	}
+	if (position < 1 || position > 16 && pegs.size() == 16)
+	{
+		throw Error("Position must be 1 to 16.\n");
 	}
 	else if (player == "")
 	{
@@ -33,12 +37,19 @@ void Tic_tac_toe::mark_board(int position)
 	}
 }
 
-std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& b) 
+std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& t) 
 {
 	std::cout << "\n"; //formatting purposes
-	for (std::size_t i = 0; i < 9; i += 3) // += 3 for new row
+	for (std::size_t i = 0; i < t.pegs.size(); i += sqrt(t.pegs.size()))
 	{
-		out << b.pegs[i] + " | " + b.pegs[i + 1] + " | " + b.pegs[i + 2] + "\n";
+		out << t.pegs[i] << "|" << t.pegs[i + 1] << "|" << t.pegs[i + 2];
+
+		if (t.pegs.size() == 16)
+		{
+			out << "|" << t.pegs[i + 3];
+		}
+
+		out << "\n";
 	}
 	return out;
 }
