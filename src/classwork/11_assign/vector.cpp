@@ -27,3 +27,25 @@ Vector::Vector(const Vector& v)
 		nums[i] = v[i]; //
 	}
 }
+
+/*
+Release dynamic memory/Deallocate memory
+*/
+
+Vector::~Vector()
+{
+	std::cout << "\nRelease memory\n";
+
+	delete[] nums; //the [] is for arrays
+}
+
+//from here below, is free functions
+
+void use_vector()
+{
+	Vector v2(3); //releases memory because it is a pointer
+	Vector* v1 = new Vector(4); //doesn't release memory because it is a pointer. we tell runtime compiler to leave it alone.
+
+	delete v1; //this is needed to make it release memory of v1, this prevents memory leaking
+	v1 = nullptr;
+}

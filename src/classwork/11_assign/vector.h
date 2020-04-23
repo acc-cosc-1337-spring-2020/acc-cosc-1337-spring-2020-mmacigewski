@@ -5,6 +5,7 @@
 
 #include <cstddef> //size_t datatype
 #include <stddef.h>
+#include <iostream>
 
 class Vector
 {
@@ -16,6 +17,8 @@ public:
 
 	int& operator[](int i) { return nums[i]; } //allows us to say v[1] = 3. It edits num
 	int& operator[](int i)const { return nums[i]; }
+
+	~Vector(); //destructor(deallocates memory_
 
 protected:
 
@@ -30,3 +33,9 @@ private:
 
 
 #endif // !MY_VECTOR_H
+
+
+//from here down, does not belong to class. simply free functions
+
+
+void use_vector();
