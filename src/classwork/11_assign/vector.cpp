@@ -29,6 +29,27 @@ Vector::Vector(const Vector& v)
 }
 
 /*
+Don't know lol
+*/
+
+Vector& Vector::operator=(const Vector& v)
+{
+	int* temp = new int[v.size];
+
+	for (size_t i = 0; i < v.size; ++i)
+	{
+		temp[i] = v[i]; //copies values from the vector being copied
+	}
+
+	delete nums; //doesn't want v2 leaking memory so it deletes the nums
+
+	nums = temp;
+	size = v.size;
+
+	return *this;
+}
+
+/*
 Release dynamic memory/Deallocate memory
 */
 

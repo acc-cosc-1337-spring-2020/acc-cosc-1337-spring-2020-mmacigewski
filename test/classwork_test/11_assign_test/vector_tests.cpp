@@ -27,3 +27,18 @@ TEST_CASE("Test class copy with dynamic memeory with heap varibales")
 	REQUIRE(v1[1] == 5);
 	REQUIRE(v2[1] == 0);
 }
+
+TEST_CASE("Test class copy dynamic heap with 2 variables")
+{
+	Vector v1(2);
+	Vector v2(3);
+
+	//so basicaly v1 releases memory once it is down running leaving v2 to point to nothing thus causing an error
+	v2 = v1; //will have v2 start pointing to v1, leaving memory on the heap unpointed(memory leak) and now we have 2 pointers pointing towards one mem location
+
+
+
+	v1[1] = 5;
+
+	REQUIRE(v1[1] == v2[2]);
+}
