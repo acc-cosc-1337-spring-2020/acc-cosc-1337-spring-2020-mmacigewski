@@ -4,19 +4,15 @@
 #include "tic_tac_toe_3.h"
 #include "tic_tac_toe_4.h"
 
-#include <memory>
-#include <iostream>
 
 using std::cout; using std::cin;
 
 int main() 
 {
-	std::vector <std::reference_wrapper<Tic_tac_toe>> games;
+	std::vector<std::unique_ptr<Tic_tac_toe>> games;
 
-	std::unique_ptr<Tic_tac_toe> tic_ptr;
-
-	TicTacToeManager manager;
-
+	//std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
+	std::unique_ptr<TicTacToeManager> manager;
 	string playerOption{ "" };
 
 	bool isRunning{ true }, error{ true };
@@ -31,22 +27,18 @@ int main()
 
 		cout << "Tic Tac Toe game 3 or 4: ";
 		cin >> playerInt;
-		Tic_tac_toe_3 game3;
-		tic_tac_toe_4 game4;
+
+		std::unique_ptr<Tic_tac_toe_3> game3 = std::make_unique<Tic_tac_toe_3>();
+		std::unique_ptr<tic_tac_toe_4> game4 = std::make_unique<tic_tac_toe_4>();
 
 		if (playerInt == 3)
 		{
-			cout << "Executing tic tac toe 3";
-			
-			games.push_back(game3);
-
-			//for later tic_ptr = make_unique<Tic_tac_toe_3>;
+			games.push_back(std::move(game3)); //we gotta transfer ownership to the vector
 
 		}
 		else if (playerInt == 4)
 		{
-			cout << "Executing tic tac toe 4";
-			games.push_back(game4);
+			games.push_back(std::move(game4));
 		}
 
 
@@ -57,7 +49,7 @@ int main()
 			cin >> playerOption;
 			try
 			{
-				//for later*games[games.size() - 1].get().start_game(playerOption); //the .get gets the stored reference
+				games[games.size() - 1]->start_game(playerOption); //the .get gets the stored reference
 				error = false;
 				cout << "\n"; //to add a break in the text
 			}
@@ -71,31 +63,23 @@ int main()
 		{
 			try
 			{
-				cin >> games[games.size() - 1].get();
-				cout << games[games.size() - 1].get();
+				cin >> *games[games.size() - 1];
+				cout << *games[games.size() - 1];
 			}
 
 			catch (Error e)
 			{
 				cout << e.get_message();
 			}
-		} while (!games[games.size() - 1].get().gameOver());
+		} while (!games[games.size() - 1]->gameOver());
 
-		if (games[games.size() - 1].get().gameOver() == false)
+		if(games[games.size() - 1]->gameOver() == true)
 		{
-			cout << "\nDo you want to continue(y/n): ";
-			cin >> option;
-			std::cout << "\n"; //to add a break in text
+			manager->save_game(games[games.size() - 1]);//saves game instance, causes error that I canno't figure out
 
-			isRunning = option == 'n' ? false : true;
-		}
-		else
-		{
-			manager.save_game(games[games.size() - 1].get());//saves game instance
+			cout << "\nPlayer " << games[games.size() - 1]->get_winner() << " has won the game!";
 
-			cout << "\nPlayer " << games[games.size() - 1].get().get_winner() << " has won the game!";
-
-			cout << "\n\n" << manager; //displays board
+			cout << "\n\n" << *manager; //displays board
 			std::cout << "\nDo you want to play again(Y/n): ";
 			cin >> option;
 			std::cout << "\n"; //to add a break in text
@@ -104,6 +88,11 @@ int main()
 
 			isRunning = option == 'n' ? false : true;
 		}
+	}
+
+	if (isRunning == false)
+	{
+		cout << *manager;
 	}
 
 

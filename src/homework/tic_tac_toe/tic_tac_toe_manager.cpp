@@ -4,7 +4,7 @@
 std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 {
 
-	for (auto game : manager.games)
+	for (auto& game : manager.games)
 	{
 		out << game;
 		
@@ -15,10 +15,11 @@ std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 	return out;
 }
 
-void TicTacToeManager::save_game(Tic_tac_toe b)
+
+void TicTacToeManager::save_game(std::unique_ptr<Tic_tac_toe>& b)
 {
-	games.push_back(b);
-	update_winner_count(b.get_winner());
+	games.push_back(std::move(b)); //I think the error is here??
+	update_winner_count(b->get_winner());
 }
 
 void TicTacToeManager::update_winner_count(std::string winner)

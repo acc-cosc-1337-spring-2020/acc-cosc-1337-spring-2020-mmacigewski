@@ -56,7 +56,6 @@ std::ostream& operator<<(std::ostream& out, const Tic_tac_toe& t)
 
 std::istream& operator>>(std::istream& in, Tic_tac_toe& b)
 {
-	std::cout << "Pegs size" << b.pegs.size();
 	int pos{ 0 };
 	std::cout << "Player " << b.get_player() << " enter a position: ";
 	in >> pos;

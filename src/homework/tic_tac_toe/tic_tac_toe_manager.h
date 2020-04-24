@@ -3,21 +3,19 @@
 
 #include "tic_tac_toe.h"
 
-#include <vector>
-#include <string>
 #include <iostream>
 
 class TicTacToeManager
 {
 public:
 
-	void save_game(const Tic_tac_toe b);
+	void save_game(std::unique_ptr<Tic_tac_toe>& b);
 
 	friend std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager);
 
 private:
 
-	std::vector<std::reference_wrapper<Tic_tac_toe>> games;
+	std::vector<std::unique_ptr<Tic_tac_toe>> games;
 
 	int x_win{ 0 };
 	int o_win{ 0 };

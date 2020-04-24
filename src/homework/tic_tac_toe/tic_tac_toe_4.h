@@ -11,7 +11,7 @@ class tic_tac_toe_4 : public Tic_tac_toe
 
 public:
 
-	tic_tac_toe_4() : Tic_tac_toe(4) { std::cout << "Passing to constructor"; }
+	tic_tac_toe_4() : Tic_tac_toe(4) {}
 
 
 private:

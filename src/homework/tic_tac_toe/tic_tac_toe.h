@@ -2,6 +2,8 @@
 
 #include <string>
 #include <vector>
+#include <memory>
+#include <utility>
 
 
 using std::string;
@@ -25,9 +27,9 @@ protected:
 
 	std::vector<string> pegs; //initializes a vector of x elements with each being a space.
 
-	virtual bool checkColumnWin();
-	virtual bool checkCheckRowWin();
-	virtual bool checkDiagonalWin();
+	virtual bool checkColumnWin() = 0;
+	virtual bool checkCheckRowWin() = 0;
+	virtual bool checkDiagonalWin() = 0;
 	virtual void setWinner();
 
 private: //most logic goes within the private functions
