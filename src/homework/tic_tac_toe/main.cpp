@@ -9,10 +9,9 @@ using std::cout; using std::cin;
 
 int main() 
 {
-	std::vector<std::unique_ptr<Tic_tac_toe>> games;
 
-	//std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
-	std::unique_ptr<TicTacToeManager> manager;
+	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
+	
 	string playerOption{ "" };
 
 	bool isRunning{ true }, error{ true };
@@ -27,18 +26,17 @@ int main()
 
 		cout << "Tic Tac Toe game 3 or 4: ";
 		cin >> playerInt;
-
-		std::unique_ptr<Tic_tac_toe_3> game3 = std::make_unique<Tic_tac_toe_3>();
-		std::unique_ptr<tic_tac_toe_4> game4 = std::make_unique<tic_tac_toe_4>();
+		
+		std::unique_ptr<Tic_tac_toe> game;
 
 		if (playerInt == 3)
 		{
-			games.push_back(std::move(game3)); //we gotta transfer ownership to the vector
+			game = std::make_unique<Tic_tac_toe_3>();
 
 		}
 		else if (playerInt == 4)
 		{
-			games.push_back(std::move(game4));
+			game = std::make_unique<tic_tac_toe_4>();
 		}
 
 
@@ -49,7 +47,7 @@ int main()
 			cin >> playerOption;
 			try
 			{
-				games[games.size() - 1]->start_game(playerOption); //the .get gets the stored reference
+				game->start_game(playerOption);
 				error = false;
 				cout << "\n"; //to add a break in the text
 			}
@@ -63,21 +61,21 @@ int main()
 		{
 			try
 			{
-				cin >> *games[games.size() - 1];
-				cout << *games[games.size() - 1];
+				cin >> *game;
+				cout << *game;
 			}
 
 			catch (Error e)
 			{
 				cout << e.get_message();
 			}
-		} while (!games[games.size() - 1]->gameOver());
+		} while (!game->gameOver());
 
-		if(games[games.size() - 1]->gameOver() == true)
+		if(game->gameOver() == true)
 		{
-			manager->save_game(games[games.size() - 1]);//saves game instance, causes error that I canno't figure out
+			cout << "\nPlayer " << game->get_winner() << " has won the game!";
 
-			cout << "\nPlayer " << games[games.size() - 1]->get_winner() << " has won the game!";
+			manager->save_game(game);//saves game instance, causes error that I canno't figure out
 
 			cout << "\n\n" << *manager; //displays board
 			std::cout << "\nDo you want to play again(Y/n): ";
