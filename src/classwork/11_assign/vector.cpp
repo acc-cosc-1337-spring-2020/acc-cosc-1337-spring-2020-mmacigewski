@@ -17,7 +17,7 @@ Vector::Vector(size_t sz)
  Initialize array elements to the v.nums array values
 */
 Vector::Vector(const Vector& v)
-	: size{v.size}, nums{new int[v.size]} 
+	: size{ v.size }, nums{ new int[v.size] }, space(size)
 //size{v.size} sets the new class to the size of the old one, and then creates a array of the same size
 //you want it to be const so it doesn't just reference, it copies
 {
@@ -52,6 +52,67 @@ Vector& Vector::operator=(const Vector& v)
 /*
 Release dynamic memory/Deallocate memory
 */
+
+
+/*
+Make sure new allocation is greater than space
+Create temp dynamic array of size new allocation
+Copy Values from old memmory array to temp array
+Delete old mem, set num to temp
+set space = new allocation
+*/
+void Vector::Reseve(size_t new_allocation)
+{
+
+	if (new_allocation <= space) 
+	{
+		return; //if it dont return create new memory
+	}
+
+	int* temp = new int[new_allocation]; //creates new memory
+
+	for (size_t i = 0; i < size; ++i)
+	{
+		temp[i] = nums[i];
+	}
+
+	delete[] nums;
+
+	nums = temp;
+
+	space = new_allocation;
+}
+
+void Vector::Resize(size_t new_size)
+{
+
+	Reseve(new_size);
+
+	for (size_t i = size; i < new_size; ++i)
+	{
+		nums[i] = 0;
+	}
+
+	size = new_size;
+}
+
+void Vector::Push_back(int value)
+{
+
+	if (space == 0)
+	{
+		Reseve(RESERVED);
+	}
+	else if(size == space) //no more memory
+	{
+		Reseve(space * DOUBLE);
+	}
+
+	nums[size] = value;
+
+	++size;
+
+}
 
 Vector::~Vector()
 {

@@ -1,5 +1,15 @@
 #include "tic_tac_toe_manager.h"
 
+TicTacToeManager::TicTacToeManager(Tic_tac_toe_data & read) 
+{
+	games = read.get_games(); //Initalizes games vector to get_games()
+
+	for (auto& x : games) //iterate games vector
+	{
+		x.get()->get_winner(); //Not sure how to update winner function when TicTacmanager doesn't extend tic tac toe
+	}
+}
+
 //cpp
 std::ostream& operator<<(std::ostream& out, const TicTacToeManager& manager)
 {
@@ -33,4 +43,9 @@ void TicTacToeManager::update_winner_count(std::string winner)
 		o_win++;
 	}
 	else { ties++; }
+}
+
+TicTacToeManager::~TicTacToeManager() //to save games
+{
+	data.save_games(games); //saves games to file
 }

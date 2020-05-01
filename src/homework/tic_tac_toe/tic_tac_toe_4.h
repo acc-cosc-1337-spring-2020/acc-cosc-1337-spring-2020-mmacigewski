@@ -13,6 +13,8 @@ public:
 
 	tic_tac_toe_4() : Tic_tac_toe(4) {}
 
+	tic_tac_toe_4(std::vector<string> p, string winner) : Tic_tac_toe(p, winner) {}
+
 
 private:
 

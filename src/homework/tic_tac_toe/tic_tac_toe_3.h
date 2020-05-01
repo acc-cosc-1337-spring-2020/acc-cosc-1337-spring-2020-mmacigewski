@@ -12,6 +12,8 @@ public:
 
 	Tic_tac_toe_3() : Tic_tac_toe(3) { }//initializes the pegs to 9
 
+	Tic_tac_toe_3(std::vector<string> p, string winner) : Tic_tac_toe(p, winner) {}//more code here, dont forget to pass p and winner to constructor 
+
 
 private:
 

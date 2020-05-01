@@ -9,8 +9,9 @@ using std::cout; using std::cin;
 
 int main() 
 {
+	Tic_tac_toe_data data;
 
-	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>();
+	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>(data);
 	
 	string playerOption{ "" };
 

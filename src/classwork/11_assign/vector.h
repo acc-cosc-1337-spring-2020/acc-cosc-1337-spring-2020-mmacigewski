@@ -22,6 +22,12 @@ public:
 	int& operator[](int i) { return nums[i]; } //allows us to say v[1] = 3. It edits num
 	int& operator[](int i)const { return nums[i]; }
 
+	void Reseve(size_t new_allocation);
+
+	void Resize(size_t new_size);
+
+	void Push_back(int value);
+
 	~Vector(); //destructor(deallocates memory) Rule of 3
 
 protected:
@@ -31,8 +37,11 @@ protected:
 private:
 
 	size_t size;
+	size_t space{ 0 };
 	int* nums;
 
+	const int RESERVED{ 8 };
+	const int DOUBLE{ 2 };
 };
 
 
